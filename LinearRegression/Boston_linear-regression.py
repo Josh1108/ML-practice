@@ -40,5 +40,27 @@ plt.scatter(Y_test, Y_pred)
 plt.xlabel("Prices: $Y_i$")
 plt.ylabel("Predicted prices: $\hat{Y}_i$")
 
+from sklearn.metrics import mean_squared_error
+from sklearn.metrics import r2_score
 mse = sklearn.metrics.mean_squared_error(Y_test, Y_pred)
 print(mse)
+
+y_train_predict = lm.predict(X_train)
+rmse = (np.sqrt(mean_squared_error(Y_train, y_train_predict)))
+r2 = r2_score(Y_train, y_train_predict)
+
+print("The model performance for training set")
+print("--------------------------------------")
+print('RMSE is {}'.format(rmse))
+print('R2 score is {}'.format(r2))
+print("\n")
+
+# model evaluation for testing set
+
+y_test_predict = lm.predict(X_test)
+rmse = (np.sqrt(mean_squared_error(Y_test, y_test_predict)))
+r2 = r2_score(Y_test, y_test_predict)
+print("The model performance for testing set")
+print("--------------------------------------")
+print('RMSE is {}'.format(rmse))
+print('R2 score is {}'.format(r2))
